@@ -16,15 +16,16 @@ public class HuespedCrud {
 	        factory = new ConnectionFactory();
 	    }
 	    
-	    public int insert(String nombre , String apellido,  Date fecha_de_nacimiento, String  nacionalidad, int telefono) {
+	    public int insert(String nombre , String apellido,  Date fecha_de_nacimiento, String  nacionalidad, int telefono, int id_reserva) {
 	        try (Connection conexion = factory.creaConexion()) {
-	            String sql = "INSERT INTO reserva (nombre, apellido, fecha_de_nacimiento, nacionalidad, telefono) VALUES (?, ?, ?, ?,?)";
+	            String sql = "INSERT INTO huespedes (nombre, apellido, fecha_de_nacimiento, nacionalidad, telefono, id_reserva) VALUES (?, ?, ?, ?,?,?)";
 	            PreparedStatement stm = conexion.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 	            stm.setString(1, nombre);
 	            stm.setString(2, apellido);
 	            stm.setDate(3, fecha_de_nacimiento);
 	            stm.setString(4, nacionalidad);
 	            stm.setInt(5, telefono);
+	            stm.setInt(6, id_reserva);
 
 	            int affectedRows = stm.executeUpdate();
 

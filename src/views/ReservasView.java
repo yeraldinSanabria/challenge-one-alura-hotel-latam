@@ -14,6 +14,7 @@ import com.toedter.calendar.JDateChooser;
 
 import CRUD.ReservasCrud;
 
+
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -42,6 +43,7 @@ public class ReservasView extends JFrame {
 	private JLabel labelAtras;
 	public int valorNoche = 2000;
 	public ReservasCrud crud = new ReservasCrud();
+	
 
 	/**
 	 * Launch the application.
@@ -310,8 +312,10 @@ public class ReservasView extends JFrame {
 					);
 					
 					if(reservaId >= 1) {
+					
 						 RegistroHuesped registroHuesped = new RegistroHuesped();
                          registroHuesped.setVisible(true);
+                         JOptionPane.showMessageDialog(null, "Su Número de reserva es :  " +reservaId );
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
@@ -344,7 +348,6 @@ public class ReservasView extends JFrame {
 			long diffInDays = TimeUnit.MILLISECONDS.toDays(diffInMillis);
 
 			if (diffInDays >= 0) {
-				System.out.println(diffInDays);
 				return diffInDays;
 
 			} else {

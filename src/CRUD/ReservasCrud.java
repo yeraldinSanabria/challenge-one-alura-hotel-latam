@@ -39,7 +39,6 @@ public class ReservasCrud {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             return -1; // Ocurrió un error durante la inserción
         }
     }

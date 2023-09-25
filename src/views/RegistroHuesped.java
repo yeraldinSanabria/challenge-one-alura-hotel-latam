@@ -10,6 +10,7 @@ import com.toedter.calendar.JDateChooser;
 
 import CRUD.HuespedCrud;
 
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
@@ -234,6 +235,9 @@ public class RegistroHuesped extends JFrame {
 		txtNreserva.setBackground(Color.WHITE);
 		txtNreserva.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		contentPane.add(txtNreserva);
+	
+		
+		
 
 		JSeparator separator_1_2 = new JSeparator();
 		separator_1_2.setBounds(560, 170, 289, 2);
@@ -276,16 +280,20 @@ public class RegistroHuesped extends JFrame {
 		btnguardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-		
-				System.out.println(txtNombre.getText());
-				System.out.println(txtApellido.getText());
-				System.out.println(txtFechaN.getDate());
-				System.out.println(txtTelefono.getText());
-				System.out.println(txtNacionalidad.getSelectedItem());
-				System.out.println(txtNreserva.getText());
 				
+				Date DN = new java.sql.Date(txtFechaN.getDate().getTime());
+						
 				
-				JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
+				int  huespedId = crud.insert( 
+						txtNombre.getText(),
+						txtApellido.getText(),
+						DN,
+						txtNacionalidad.getSelectedItem().toString(),
+						Integer.parseInt(txtTelefono.getText()),
+						Integer.parseInt(txtNreserva.getText())
+				);
+				
+				JOptionPane.showMessageDialog(null,"Su reserva ha sido exitosa" );
 			}
 		});
 		btnguardar.setLayout(null);
